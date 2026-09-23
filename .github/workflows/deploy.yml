@@ -1,0 +1,38 @@
+name: Deploy site
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download photos (first run only)
+        run: |
+          mkdir -p images
+          while read -r name url; do
+            [ -z "$name" ] && continue
+            [ -f "images/$name" ] || curl -fsSL -A "Mozilla/5.0" -o "images/$name" "$url"
+          done < images.txt
+          if [ -n "$(git status --porcelain images)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add images && git commit -m "Add photos" && git push
+          fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4

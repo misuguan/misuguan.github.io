@@ -119,3 +119,43 @@ if (grid) {
   var h = location.hash.slice(1);
   if (h && document.querySelector('.filters button[data-cat="' + h + '"]')) applyFilter(h);
 }
+
+/* ===== DEMO LOCK：提案示範版專用 ===== */
+(function () {
+  var CONTACT = "九號科技工作室 NINTH LAB｜LINE：@417lyjkr";
+  var bar = document.createElement("div");
+  bar.className = "demo-bar";
+  bar.innerHTML = "<b>示範版本 DEMO</b><span>本網站僅供提案展示，功能尚未啟用。網站設計與程式著作權屬九號科技工作室所有，未經授權禁止使用、複製或轉載。</span>";
+  document.body.insertBefore(bar, document.body.firstChild);
+
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="360" height="220"><text x="180" y="120" text-anchor="middle" transform="rotate(-24 180 110)" font-family="sans-serif" font-size="22" font-weight="700" fill="rgba(128,128,128,0.22)">示範版本 DEMO・NINTH LAB</text></svg>';
+  var wm = document.createElement("div");
+  wm.className = "demo-wm";
+  wm.setAttribute("aria-hidden", "true");
+  wm.style.backgroundImage = 'url("data:image/svg+xml,' + encodeURIComponent(svg) + '")';
+  document.body.appendChild(wm);
+
+  var m = document.createElement("div");
+  m.className = "demo-modal";
+  m.innerHTML = '<div class="demo-box"><b>示範版本</b><p>此功能將於正式版上線後啟用。<br>目前網站僅供提案展示，未經授權請勿使用。</p><p class="demo-c">正式版洽詢：' + CONTACT + '</p><button type="button">我知道了</button></div>';
+  document.body.appendChild(m);
+  function show(e) { if (e) { e.preventDefault(); e.stopPropagation(); } m.classList.add("open"); }
+  m.addEventListener("click", function (e) { if (e.target === m || e.target.tagName === "BUTTON") m.classList.remove("open"); });
+
+  document.addEventListener("click", function (e) {
+    if (e.target.closest(".demo-modal")) return;
+    var a = e.target.closest("a");
+    if (a && /^(https?:|tel:|mailto:)/.test(a.getAttribute("href") || "")) return show(e);
+    if (e.target.closest("#availLine,#sendLine")) return show(e);
+  }, true);
+  document.addEventListener("submit", function (e) { if (e.target.id === "availForm") show(e); }, true);
+
+  ["contextmenu", "dragstart", "copy", "cut"].forEach(function (t) {
+    document.addEventListener(t, function (e) { e.preventDefault(); });
+  });
+  document.addEventListener("keydown", function (e) {
+    var k = (e.key || "").toLowerCase(), mod = e.ctrlKey || e.metaKey;
+    if (e.key === "F12" || (mod && "supc".indexOf(k) > -1 && k) ||
+        (mod && (e.shiftKey || e.altKey) && "ijcu".indexOf(k) > -1 && k)) e.preventDefault();
+  });
+})();

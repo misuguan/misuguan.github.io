@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>線上訂房｜米宿館 Roomi house2</title>
+<meta name="description" content="米宿館訂房流程與訂房申請，可透過 Booking.com 或 LINE 直接向民宿預訂。">
+<meta property="og:title" content="線上訂房｜米宿館 Roomi house2">
+<meta property="og:description" content="米宿館訂房流程與訂房申請，可透過 Booking.com 或 LINE 直接向民宿預訂。">
+<meta property="og:image" content="images/p03.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232b2622'/><text x='50' y='68' font-size='54' text-anchor='middle' fill='%23f6f1e9' font-family='serif'>米</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LodgingBusiness","name":"米宿館 Roomi house2","telephone":"+886-911-686-713","address":{"@type":"PostalAddress","streetAddress":"府前路一段122巷6號之1","addressLocality":"中西區","addressRegion":"臺南市","addressCountry":"TW"},"checkinTime":"15:00","checkoutTime":"11:00","sameAs":["https://www.facebook.com/feng.misu2/","https://www.booking.com/hotel/tw/mi-su-guan-roomi-house2.zh-tw.html"]}</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="index.html"><b>米宿館</b><small>Roomi house 2</small></a>
+  <button class="menu-btn" aria-label="選單">☰</button>
+  <nav class="nav"><a href="index.html">首頁</a><a href="rooms.html">房型介紹</a><a href="gallery.html">空間照片</a><a href="area.html">周邊景點</a><a href="availability.html">查詢空房</a><a href="contact.html">聯絡我們</a><a class="cta" href="booking.html">立即訂房</a></nav>
+</div></header>
+<main>
+<div class="page-head wrap"><span class="eyebrow">Booking</span><h1>線上訂房</h1><p>兩種方式都可以：Booking.com 線上預訂，或填寫下方表單透過 LINE 直接向民宿訂房。</p></div>
+<div class="wrap"><div class="steps">
+  <div class="step"><h3>選擇日期房型</h3><p>確認入住日期、人數與想住的房型。</p></div>
+  <div class="step"><h3>送出訂房</h3><p>Booking.com 下單，或以 LINE 傳送訂房申請。</p></div>
+  <div class="step"><h3>轉帳預付訂金</h3><p>民宿會與您聯繫並提供匯款資訊，完成後即訂房成功。</p></div>
+  <div class="step"><h3>自助入住</h3><p>入住前 24 小時提供門鎖密碼，15:00 後即可入住。</p></div>
+</div></div>
+<section><div class="wrap two-col">
+  <div class="panel">
+    <h2 class="sec-title" style="font-size:24px">LINE 直接訂房</h2>
+    <p class="note" style="margin-bottom:18px">填好後按「產生訂房訊息」，再按「複製並開啟 LINE」貼上傳送給我們。</p>
+    <form id="bookForm"><div class="form-grid">
+      <div><label>姓名</label><input name="name" required autocomplete="name"></div>
+      <div><label>手機</label><input name="phone" type="tel" required autocomplete="tel"></div>
+      <div class="full"><label>房型</label><select name="room"><option>橘一 雙人房</option><option>藍二 雙人房</option><option>三人房</option><option>整棟包棟</option><option>未決定，請推薦</option></select></div>
+      <div><label>入住日期</label><input type="date" name="checkin" required></div>
+      <div><label>退房日期</label><input type="date" name="checkout" required></div>
+      <div><label>人數</label><select name="adults"><option value="1">1 位成人</option><option value="2" selected>2 位成人</option><option value="3">3 位成人</option><option value="4">4 位成人</option><option value="5">5 位成人</option><option value="6">6 位成人</option></select></div>
+      <div><label>預計抵達時間</label><input name="arrive" placeholder="例：17:00"></div>
+      <div class="full"><label>備註</label><textarea name="note" placeholder="加床、特殊需求等"></textarea></div>
+      <div class="full"><button class="btn solid block" type="submit">產生訂房訊息</button></div>
+    </div></form>
+    <div class="result" id="bookResult"><b>您的訂房訊息</b><pre></pre>
+      <button class="btn line block" id="sendLine" type="button">複製並開啟 LINE 傳送</button><p class="note" id="bookHint" style="margin-top:8px"></p></div>
+  </div>
+  <div>
+    <div class="panel" style="margin-bottom:18px">
+      <h3 style="margin-bottom:8px">Booking.com 線上預訂</h3>
+      <p class="note" style="margin-bottom:16px">住客評分 10 分・即時確認房況</p>
+      <a class="btn solid block" href="https://www.booking.com/hotel/tw/mi-su-guan-roomi-house2.zh-tw.html" target="_blank" rel="noopener">前往 Booking.com 訂房</a>
+    </div>
+    <div class="note panel">
+      <h3 style="color:var(--ink);margin-bottom:10px;font-size:17px">訂房須知</h3>
+      <ul>
+        <li>本民宿不提供信用卡付款，訂房後需轉帳預付訂金作為擔保。</li>
+        <li>本民宿<b>未與 Agoda 簽約合作</b>，請透過 Booking.com 或直接聯繫民宿訂房。</li>
+        <li>入住時請出示附照片之身分證明文件。</li>
+        <li>不接待孩童、不可攜帶寵物、全館禁菸。</li>
+        <li>22:00–09:00 請降低音量；不接受派對、打牌、看球賽等聚會。</li>
+        <li>無電梯、無停車場。</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+</main>
+<footer class="site-footer"><div class="wrap">
+  <div class="cols">
+    <div><h4>米宿館 Roomi house2</h4>
+      <p>屋齡超過五十年的府城老屋，<br>一間與旅人分享台南日常美好的放鬆基地。</p>
+      <p style="margin-top:12px">臺南市中西區府前路一段122巷6號之1</p></div>
+    <div><h4>聯絡</h4><ul>
+      <li><a href="tel:0911686713">電話 0911-686-713</a></li>
+      <li><a href="https://line.me/R/ti/p/@qji1016i" target="_blank" rel="noopener">LINE @qji1016i</a></li>
+      <li>WeChat shaw713</li>
+      <li><a href="https://www.facebook.com/feng.misu2/" target="_blank" rel="noopener">Facebook 粉絲專頁</a></li></ul></div>
+    <div><h4>網站導覽</h4><ul>
+      <li><a href="rooms.html">房型介紹</a></li><li><a href="gallery.html">空間照片</a></li>
+      <li><a href="availability.html">查詢空房</a></li><li><a href="booking.html">線上訂房</a></li>
+      <li><a href="contact.html">聯絡我們</a></li></ul></div>
+  </div>
+  <div class="bottom"><span>臺南市民宿 385 號 ・ 入住 15:00–23:00 ・ 退房 11:00 前</span><span>© 米宿館 Roomi house2</span></div>
+</div></footer>
+<a class="float-line" href="https://line.me/R/ti/p/@qji1016i" target="_blank" rel="noopener">LINE 詢問</a>
+<script src="main.js"></script>
+</body>
+</html>

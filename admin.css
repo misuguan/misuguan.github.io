@@ -128,3 +128,4 @@ body.admin{background:#efe9df;font-size:15px}
 .stepper output{font-family:var(--serif);font-size:44px;min-width:50px;text-align:center}
 .cell.partial{background:#f1ebe2;color:var(--muted)}
 .admin .view{padding:0}
+.tag{white-space:nowrap;flex:none}

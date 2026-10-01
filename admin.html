@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>管理後台｜米宿館 Roomi house2</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232b2622'/><text x='50' y='68' font-size='54' text-anchor='middle' fill='%23f6f1e9' font-family='serif'>米</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin">
+
+<div class="login" id="login">
+  <form class="login-box" id="loginForm">
+    <div class="brand"><b>米宿館</b><small>管理後台</small></div>
+    <label for="pw">管理密碼</label>
+    <input id="pw" type="password" autocomplete="current-password" required>
+    <p class="err" id="loginErr"></p>
+    <button class="btn solid block" type="submit">登入</button>
+    <p class="hint">示範版密碼：<b>1234</b></p>
+    <a class="back" href="index.html">‹ 回到官網</a>
+  </form>
+</div>
+
+<div class="shell" id="shell" hidden>
+  <aside class="side">
+    <div class="brand"><b>米宿館</b><small>管理後台</small></div>
+    <nav class="side-nav" id="sideNav">
+      <button data-view="dash" class="active">總覽</button>
+      <button data-view="orders">訂單管理<em id="pendingCount"></em></button>
+      <button data-view="inv">房況管理</button>
+      <button data-view="rooms">房型與房價</button>
+      <button data-view="sys">系統設定</button>
+    </nav>
+    <div class="side-foot">
+      <a href="index.html" target="_blank" rel="noopener">開啟官網 ↗</a>
+      <button type="button" id="logout">登出</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="top"><h1 id="viewTitle">總覽</h1><span class="live"><i></i><em id="stamp">即時同步中</em></span></header>
+
+    <!-- 總覽 -->
+    <section class="view" id="v-dash">
+      <div class="kpis" id="kpis"></div>
+      <div class="grid2">
+        <div class="card-a"><h2>今日動態</h2><div id="todayList"></div></div>
+        <div class="card-a"><h2>未來 14 天住房率</h2><div id="occ"></div></div>
+      </div>
+      <div class="card-a"><h2>最新訂單</h2><div id="latest"></div></div>
+    </section>
+
+    <!-- 訂單 -->
+    <section class="view" id="v-orders" hidden>
+      <div class="toolbar">
+        <input id="q" type="search" placeholder="搜尋姓名、電話、訂單編號">
+        <select id="fStatus"><option value="">全部狀態</option><option>待確認</option><option>已確認</option><option>已入住</option><option>已退房</option><option>已取消</option></select>
+        <select id="fRange"><option value="upcoming">即將入住</option><option value="all">全部日期</option><option value="past">已過期</option></select>
+        <button class="btn solid sm" id="newOrder" type="button">＋ 新增訂單</button>
+      </div>
+      <div class="table-wrap"><table class="tbl" id="orderTbl"></table></div>
+      <p class="empty" id="orderEmpty" hidden>沒有符合條件的訂單</p>
+    </section>
+
+    <!-- 房況 -->
+    <section class="view" id="v-inv" hidden>
+      <div class="toolbar">
+        <button class="btn sm" id="invPrev" type="button">‹ 前 14 天</button>
+        <strong id="invRange"></strong>
+        <button class="btn sm" id="invNext" type="button">後 14 天 ›</button>
+        <span class="tip">點格子可直接修改剩餘空房；訂房後會自動扣除。</span>
+      </div>
+      <div class="table-wrap"><table class="inv" id="invTbl"></table></div>
+      <div class="card-a bulk">
+        <h2>批次設定剩餘空房</h2>
+        <form id="bulkForm" class="bulk-grid">
+          <div><label for="bRoom">房型</label><select id="bRoom"></select></div>
+          <div><label for="bFrom">起始日</label><input id="bFrom" type="date" required></div>
+          <div><label for="bTo">結束日</label><input id="bTo" type="date" required></div>
+          <div><label for="bVal">剩餘間數</label><input id="bVal" type="number" min="0" max="9" value="0" required></div>
+          <button class="btn solid sm" type="submit">套用</button>
+        </form>
+        <p class="tip">例如：設定為 0 即為關房（整修、自用）；設定為 1 即重新開放。</p>
+      </div>
+    </section>
+
+    <!-- 房型 -->
+    <section class="view" id="v-rooms" hidden>
+      <div class="table-wrap"><table class="tbl" id="roomTbl"></table></div>
+      <p class="tip">修改後前台的房價、可住人數會立即更新。</p>
+    </section>
+
+    <!-- 系統 -->
+    <section class="view" id="v-sys" hidden>
+      <div class="card-a">
+        <h2>匯出訂單</h2><p class="tip">下載所有訂單為 CSV 檔，可用 Excel 開啟。</p>
+        <button class="btn solid sm" id="exportCsv" type="button">下載 CSV</button>
+      </div>
+      <div class="card-a">
+        <h2>重設示範資料</h2><p class="tip">清除這台裝置上所有訂單與房況設定，恢復為預設的範例資料。</p>
+        <button class="btn sm danger" id="resetBtn" type="button">重設資料</button><span id="resetMsg" class="tip"></span>
+      </div>
+      <div class="card-a">
+        <h2>關於此示範版</h2>
+        <p class="tip">此後台為提案展示用，資料儲存在目前使用的瀏覽器中（同一台裝置的前台與後台會即時同步）。正式版將改用雲端資料庫，手機、電腦、多位管理者都能同步使用，並加上帳號權限管理與訂房通知。</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="modal" id="modal" hidden><div class="modal-box" id="modalBox"></div></div>
+
+<script src="store.js"></script>
+<script src="admin.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

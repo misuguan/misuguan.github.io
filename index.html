@@ -20,7 +20,7 @@
 <header class="site-header"><div class="wrap">
   <a class="brand" href="index.html"><b>米宿館</b><small>Roomi house 2</small></a>
   <button class="menu-btn" aria-label="選單">☰</button>
-  <nav class="nav"><a href="index.html" class="active">首頁</a><a href="rooms.html">房型介紹</a><a href="gallery.html">空間照片</a><a href="area.html">周邊景點</a><a href="availability.html">查詢空房</a><a href="contact.html">聯絡我們</a><a class="cta" href="booking.html">立即訂房</a></nav>
+  <nav class="nav"><a href="index.html" class="active">首頁</a><a href="rooms.html">房型介紹</a><a href="gallery.html">空間照片</a><a href="area.html">周邊景點</a><a href="availability.html">空房日曆</a><a href="contact.html">聯絡我們</a><a class="cta" href="booking.html">立即訂房</a></nav>
 </div></header>
 <main>
 <section class="hero" style="padding:0"><img src="images/p03.jpg" alt="米宿館 一樓共用客廳">
@@ -58,10 +58,10 @@
   <span class="eyebrow">Rooms</span>
   <h2 class="sec-title">房型介紹</h2>
   <p class="sec-lead">每間客房皆附私人衛浴與免治馬桶、冷氣、液晶電視與 Netflix。點選房型看詳細介紹。</p>
-  <div class="cards"><a class="card fade" href="rooms.html#orange"><img src="images/p01.jpg" alt="橘一 雙人房" loading="lazy">
-<div class="body"><h3><span class="tag" style="background:#c9692a"></span>橘一 雙人房</h3><div class="meta">1 張雙人床 ・ 2 人 ・ 約 10㎡</div><p>溫暖木質床頭搭配暖黃小燈，白紗窗簾透進柔和日光。空間不大，但該有的都有，是一…</p></div></a><a class="card fade" href="rooms.html#blue"><img src="images/p27.jpg" alt="藍二 雙人房" loading="lazy">
-<div class="body"><h3><span class="tag" style="background:#3d6a8a"></span>藍二 雙人房</h3><div class="meta">1 張雙人床 ・ 2 人 ・ 約 10㎡</div><p>明亮的大窗與坐墊小茶几，午後在窗邊泡杯茶、翻本書。床鋪好睡到自然醒，是住客最…</p></div></a><a class="card fade" href="rooms.html#triple"><img src="images/p04.jpg" alt="三人房" loading="lazy">
-<div class="body"><h3><span class="tag" style="background:#9a6b43"></span>三人房</h3><div class="meta">1 張雙人床 + 1 張單人床 ・ 3 人</div><p>適合三五好友或家人同行，保留老屋的格局與光線，並配有獨立衛浴、免治馬桶與遮光…</p></div></a><a class="card fade" href="rooms.html#whole"><img src="images/p00.jpg" alt="整棟包棟" loading="lazy">
+  <div class="cards"><a class="card fade" href="rooms.html#orange" data-room="orange"><div class="card-media"><img src="images/p01.jpg" alt="橘一 雙人房" loading="lazy"><div class="badge-slot"></div></div>
+<div class="body"><h3><span class="tag" style="background:#c9692a"></span>橘一 雙人房</h3><div class="meta">1 張雙人床 ・ 2 人 ・ 約 10㎡</div><p>溫暖木質床頭搭配暖黃小燈，白紗窗簾透進柔和日光。空間不大，但該有的都有，是一…</p></div></a><a class="card fade" href="rooms.html#blue" data-room="blue"><div class="card-media"><img src="images/p27.jpg" alt="藍二 雙人房" loading="lazy"><div class="badge-slot"></div></div>
+<div class="body"><h3><span class="tag" style="background:#3d6a8a"></span>藍二 雙人房</h3><div class="meta">1 張雙人床 ・ 2 人 ・ 約 10㎡</div><p>明亮的大窗與坐墊小茶几，午後在窗邊泡杯茶、翻本書。床鋪好睡到自然醒，是住客最…</p></div></a><a class="card fade" href="rooms.html#triple" data-room="triple"><div class="card-media"><img src="images/p04.jpg" alt="三人房" loading="lazy"><div class="badge-slot"></div></div>
+<div class="body"><h3><span class="tag" style="background:#9a6b43"></span>三人房</h3><div class="meta">1 張雙人床 + 1 張單人床 ・ 3 人</div><p>適合三五好友或家人同行，保留老屋的格局與光線，並配有獨立衛浴、免治馬桶與遮光…</p></div></a><a class="card fade" href="rooms.html#whole" data-room="whole"><div class="card-media"><img src="images/p00.jpg" alt="整棟包棟" loading="lazy"><div class="badge-slot"></div></div>
 <div class="body"><h3><span class="tag" style="background:#2b2622"></span>整棟包棟</h3><div class="meta">多種床型 ・ 最多 6 人</div><p>三層樓的小透天整棟包下，連同一樓的大木桌共用客廳，適合家族與朋友聚會旅行（不…</p></div></a></div>
   <div class="btns" style="margin-top:30px"><a class="btn solid" href="rooms.html">查看所有房型</a><a class="btn" href="availability.html">查詢空房</a></div>
 </div></section>
@@ -97,9 +97,10 @@
       <li><a href="availability.html">查詢空房</a></li><li><a href="booking.html">線上訂房</a></li>
       <li><a href="contact.html">聯絡我們</a></li></ul></div>
   </div>
-  <div class="bottom"><span>臺南市民宿 385 號 ・ 入住 15:00–23:00 ・ 退房 11:00 前</span><span>網站設計 © 九號科技工作室 NINTH LAB・示範版本，未經授權禁止使用</span></div>
+  <div class="bottom"><span>臺南市民宿 385 號 ・ 入住 15:00–23:00 ・ 退房 11:00 前</span><span>網站設計 © 九號科技工作室 NINTH LAB・示範版本，未經授權禁止使用・<a href="admin.html">民宿管理後台</a></span></div>
 </div></footer>
 <a class="float-line" href="https://line.me/R/ti/p/@qji1016i" target="_blank" rel="noopener">LINE 詢問</a>
+<script src="store.js"></script>
 <script src="main.js"></script>
 </body>
 </html>

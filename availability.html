@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>查詢空房｜米宿館 Roomi house2</title>
-<meta name="description" content="選擇入住與退房日期，查詢米宿館即時空房。">
-<meta property="og:title" content="查詢空房｜米宿館 Roomi house2">
-<meta property="og:description" content="選擇入住與退房日期，查詢米宿館即時空房。">
+<title>空房日曆｜米宿館 Roomi house2</title>
+<meta name="description" content="米宿館即時空房日曆，點選日期即可查看各房型剩餘空房並直接預訂。">
+<meta property="og:title" content="空房日曆｜米宿館 Roomi house2">
+<meta property="og:description" content="米宿館即時空房日曆，點選日期即可查看各房型剩餘空房並直接預訂。">
 <meta property="og:image" content="images/p03.jpg">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232b2622'/><text x='50' y='68' font-size='54' text-anchor='middle' fill='%23f6f1e9' font-family='serif'>米</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,29 +20,20 @@
 <header class="site-header"><div class="wrap">
   <a class="brand" href="index.html"><b>米宿館</b><small>Roomi house 2</small></a>
   <button class="menu-btn" aria-label="選單">☰</button>
-  <nav class="nav"><a href="index.html">首頁</a><a href="rooms.html">房型介紹</a><a href="gallery.html">空間照片</a><a href="area.html">周邊景點</a><a href="availability.html" class="active">查詢空房</a><a href="contact.html">聯絡我們</a><a class="cta" href="booking.html">立即訂房</a></nav>
+  <nav class="nav"><a href="index.html">首頁</a><a href="rooms.html">房型介紹</a><a href="gallery.html">空間照片</a><a href="area.html">周邊景點</a><a href="availability.html" class="active">空房日曆</a><a href="contact.html">聯絡我們</a><a class="cta" href="booking.html">立即訂房</a></nav>
 </div></header>
 <main>
-<div class="page-head wrap"><span class="eyebrow">Availability</span><h1>查詢空房</h1><p>選擇日期與人數，即可查看即時空房與房價。</p></div>
-<div class="wrap two-col" style="padding-bottom:80px">
-  <form class="panel" id="availForm">
-    <div class="form-grid">
-      <div><label>入住日期</label><input type="date" name="checkin" required></div>
-      <div><label>退房日期</label><input type="date" name="checkout" required></div>
-      <div class="full"><label>入住人數</label><select name="adults"><option value="1">1 位成人</option><option value="2" selected>2 位成人</option><option value="3">3 位成人</option><option value="4">4 位成人</option><option value="5">5 位成人</option><option value="6">6 位成人</option></select></div>
-      <div class="full"><button class="btn solid block" type="submit">查詢即時空房與房價</button></div>
-      <div class="full"><button class="btn line block" type="button" id="availLine">改用 LINE 詢問空房</button><p class="note" id="availHint" style="margin-top:8px"></p></div>
+<div class="page-head wrap"><span class="eyebrow">Availability</span><h1>空房日曆</h1><p>房況即時更新。點選日期，查看當晚還有哪些房間可以預訂。</p></div>
+<div class="wrap" style="padding-bottom:80px">
+  <div class="cal-tabs" id="calTabs"></div>
+  <div class="cal-layout">
+    <div class="panel cal-panel">
+      <div class="cal-head"><button type="button" id="calPrev" aria-label="上個月">‹</button><h2 id="calTitle"></h2><button type="button" id="calNext" aria-label="下個月">›</button></div>
+      <div class="cal" id="cal"></div>
+      <div class="cal-foot"><span><i class="lg ok"></i>有空房</span><span><i class="lg full"></i>已滿</span><span class="live"><i></i><em id="calStamp"></em></span></div>
     </div>
-  </form>
-  <div class="note">
-    <h3 style="color:var(--ink);margin-bottom:10px;font-size:18px">查詢說明</h3>
-    <ul>
-      <li>即時空房與房價透過本民宿 Booking.com 官方頁面顯示。</li>
-      <li>也可按「LINE 詢問」，系統會自動整理好日期與人數，貼上即可傳送。</li>
-      <li>入住 15:00–23:00，退房 11:00 前。</li>
-      <li>本民宿不接待孩童入住，恕無嬰兒床。</li>
-    </ul>
-    <div class="btns" style="margin-top:18px"><a class="btn" href="booking.html">前往訂房</a><a class="btn" href="rooms.html">看房型</a></div>
+    <aside class="panel day-panel" id="dayPanel"><h3>選擇日期</h3><p class="note">點選左側日曆上的日期，這裡會列出當晚各房型的剩餘空房。</p>
+      <ul class="note" style="margin-top:14px"><li>入住 15:00–23:00，退房 11:00 前</li><li>整棟包棟需三間客房當晚皆為空房</li><li>本民宿不接待孩童入住</li></ul></aside>
   </div>
 </div>
 </main>
@@ -61,9 +52,10 @@
       <li><a href="availability.html">查詢空房</a></li><li><a href="booking.html">線上訂房</a></li>
       <li><a href="contact.html">聯絡我們</a></li></ul></div>
   </div>
-  <div class="bottom"><span>臺南市民宿 385 號 ・ 入住 15:00–23:00 ・ 退房 11:00 前</span><span>網站設計 © 九號科技工作室 NINTH LAB・示範版本，未經授權禁止使用</span></div>
+  <div class="bottom"><span>臺南市民宿 385 號 ・ 入住 15:00–23:00 ・ 退房 11:00 前</span><span>網站設計 © 九號科技工作室 NINTH LAB・示範版本，未經授權禁止使用・<a href="admin.html">民宿管理後台</a></span></div>
 </div></footer>
 <a class="float-line" href="https://line.me/R/ti/p/@qji1016i" target="_blank" rel="noopener">LINE 詢問</a>
+<script src="store.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
